@@ -1,0 +1,41 @@
+body{
+    width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4rem;
+}
+
+.switch-button{
+  height: 4rem;
+  width: 36rem;
+  border: 1px rgb(139, 139, 139) solid ;
+  border-top-left-radius: .5rem;
+  border-top-right-radius: .5rem;
+  margin-top: 2rem;
+
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  line-height: 4rem;
+
+  font-family: Arial, Helvetica, sans-serif;
+  color:rgb(54, 54, 54) ;
+}
+
+.timer-button{
+   width: 18rem;
+   height: 4rem;
+}
+
+.stopwatch-button{
+   width: 18rem;
+   height: 4rem;
+}
+
+.stopwatch-container{
+ width: 36rem;
+ height: 20rem;
+ border: 1px rgb(139, 139, 139) solid;
+
+ border-top: none;
+}
