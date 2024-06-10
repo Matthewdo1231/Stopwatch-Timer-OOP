@@ -86,3 +86,8 @@ body {
   border-radius: 2px;
   cursor: pointer;
 }
+
+.timermode-start-button:hover{
+  color: white;
+  background-color: rgb(107, 114, 240);
+}
