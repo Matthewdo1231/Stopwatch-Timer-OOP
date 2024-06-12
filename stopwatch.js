@@ -16,6 +16,12 @@ class Timer {
     document.querySelector(
       ".control-timer-container"
     ).innerHTML = `<button class="timermode-start-button">START</button>`;
+
+    document.querySelector(".timermode-start-button").
+    addEventListener("click",()=>{
+       this.#startTimer();
+    });
+
   }
 
   #getInputedTime() {
@@ -65,15 +71,7 @@ class Timer {
     }
     
     //add 0 if its only 1 digit
-    if(secondsElem.innerHTML.length === 2 && isNaN(secondsElem.innerHTML)){
-      secondsElem.innerHTML = '0' + secondsElem.innerHTML;
-    }
-    else if(minutesElem.innerHTML.length === 2 && isNaN(minutesElem.innerHTML)){
-      minutesElem.innerHTML = '0' + minutesElem.innerHTML;
-    }
-    else if(hoursElem.innerHTML.length === 2 && isNaN(hoursElem.innerHTML)){
-      hoursElem.innerHTML = '0' + hoursElem.innerHTML;
-    }
+    this.#addZerotoDigit(secondsElem,minutesElem,hoursElem)
 
     //exract the number of the stopwatch
     this.timeNumber = hoursElem.innerHTML + minutesElem.innerHTML + secondsElem.innerHTML;
@@ -81,6 +79,37 @@ class Timer {
     this.timeNumber = (Number(this.timeNumber.substring(0,2))*60*60) + (Number(this.timeNumber.substring(2,4)) *60) + (Number(this.timeNumber.substring(4)));
     console.log(this.timeNumber)
   
+  }
+
+
+  #addZerotoDigit(secondsElem,minutesElem,hoursElem){
+    if(secondsElem.innerHTML.length === 2 && isNaN(secondsElem.innerHTML)){
+      secondsElem.innerHTML = '0' + secondsElem.innerHTML;
+    } 
+    else if(minutesElem.innerHTML.length === 2 && isNaN(minutesElem.innerHTML)){
+      minutesElem.innerHTML = '0' + minutesElem.innerHTML;
+    }
+    else if(hoursElem.innerHTML.length === 2 && isNaN(hoursElem.innerHTML)){
+      hoursElem.innerHTML = '0' + hoursElem.innerHTML;
+    }
+  }
+
+   #startTimer(){
+    let temp = 0;
+    let hoursElem = document.querySelector(".timer-hours");
+    let minutesElem = document.querySelector(".timer-minutes");
+    let secondsElem = document.querySelector(".timer-seconds");
+    setInterval(()=>{
+
+      this.timeNumber = this.timeNumber - 1;
+      hoursElem.innerHTML = Math.floor(this.timeNumber / 3600) + "h";
+      temp = this.timeNumber % 3600;
+      minutesElem.innerHTML = Math.floor(temp / 60) + "m";
+      temp = temp % 60;
+      secondsElem.innerHTML = temp + "s";
+  
+      
+    },1000)
   }
 }
 
